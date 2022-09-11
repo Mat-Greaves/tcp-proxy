@@ -21,13 +21,14 @@ type Proxy struct {
 	log log.Logger
 }
 
+// TODO: move main to cmd directory, refactor proxy to just handle single proxy connection
 func main() {
 	// listen for new inbound connections
 	// handle each each connection in a goroutine
 	// need to consider that traffic comes in both directions
 	flag.Parse()
 	fmt.Printf("Forwarding TCP connections from: %s, to: %s\n", *src, *dst)
-	// TODO: listen until ctrl+c is called, think about graceful shutdown
+	// TODO: listen until sigint is called, think about graceful shutdown
 	p := Proxy{
 		src: *src,
 		dst: *dst,
